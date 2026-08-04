@@ -1,7 +1,6 @@
 const { Client, GatewayIntentBits, EmbedBuilder, ActivityType } = require('discord.js');
 const fs = require('fs');
 const cron = require('node-cron');
-const config = require('./config.json');
 const { fetchLeagueData } = require('./utils/api');
 const Tracker = require('./utils/tracker');
 
@@ -15,7 +14,7 @@ const client = new Client({
 
 // Initialize tracker
 const tracker = new Tracker();
-let currentLeague = config.defaultLeague || 'Top1';
+let currentLeague = 'Top1';
 let trackedChannelId = null;
 
 // Load commands
@@ -136,7 +135,13 @@ client.once('ready', async () => {
     console.log('✅ Bot is ready!');
 });
 
-client.login(process.env.TOKEN || config.token);
+const token = process.env.TOKEN;
+if (!token) {
+    console.error('❌ ERROR: TOKEN environment variable is not set!');
+    process.exit(1);
+}
+
+client.login(token);
 
 process.on('unhandledRejection', error => {
     console.error('Unhandled rejection:', error);
