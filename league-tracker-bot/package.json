@@ -1,14 +1,12 @@
 {
   "name": "league-tracker-bot",
   "version": "1.0.0",
-  "description": "Discord bot for tracking Pet Simulator 99 leagues",
+  "description": "Discord bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "discord.js": "^14.14.1",
-    "axios": "^1.6.0",
-    "node-cron": "^3.0.0"
+    "discord.js": "^14.14.1"
   }
 }
