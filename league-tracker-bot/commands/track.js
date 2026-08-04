@@ -11,7 +11,7 @@ module.exports = {
                 .setRequired(true))
         .addChannelOption(option =>
             option.setName('channel')
-                .setDescription('The channel to send updates to (default: current channel)')
+                .setDescription('The channel to send updates to')
                 .setRequired(false)),
 
     async execute(interaction, tracker, currentLeague, trackedChannelId, setTrackedChannel, setCurrentLeague) {
